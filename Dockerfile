@@ -1,4 +1,4 @@
-FROM ubunto
+FROM ubuntu
 
 RUN echo v
 
