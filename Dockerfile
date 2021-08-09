@@ -1,6 +1,6 @@
 FROM ubuntu
 
-COPY ./target
+COPY . /target
 
 RUN echo v
 
