@@ -25,9 +25,9 @@ jobs:
       - name: get_version
         uses: battila7/get-version-action@v2
 
-      - run: echo ${{ steps.get_version.outputs.version }}
+      - run: echo ${{ steps.get_version.outputs.major }}
 
-      - run: echo ${{ steps.get_version.outputs.version-without-v }}
+      - run: echo ${{ steps.get_version.outputs.patch }}
         
 #      - name: Bump release version
 #        id: bump_version
