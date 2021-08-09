@@ -27,7 +27,7 @@ jobs:
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@master
         with:
-          valueFile: 'main.yaml'
+          valueFile: 'my-app/pom.xml'
           propertyPath: 'file.version'
           value: v1.0.1
           commitChange: false
