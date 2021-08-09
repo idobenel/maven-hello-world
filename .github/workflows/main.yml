@@ -21,9 +21,17 @@ jobs:
         with:
           java-version: '1.8'
       
-      - name: change version
-        run: sed '0,/1.0.0/s/1.0.0/1.0.1/' my-app/pom.xml
-
+     # - name: change version
+     #   run: sed '0,/1.0.0/s/1.0.0/1.0.1/' my-app/pom.xml
+      
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'main.yaml'
+          propertyPath: 'file.version'
+          value: v1.0.1
+          commitChange: false
+          updateFile: true
 
       - name: Build with Maven
         run: |
