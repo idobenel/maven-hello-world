@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM alpine
 
 COPY my-app /my-app
 
