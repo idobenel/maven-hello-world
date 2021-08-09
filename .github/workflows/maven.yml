@@ -44,6 +44,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
+          
+      - name: push tag to docker
+        run: docker push idobenel90/maven-hello-world:tagname
 
 
 
