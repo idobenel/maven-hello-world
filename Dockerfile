@@ -1,7 +1,5 @@
 FROM ubuntu
 
-COPY . /staging
+COPY target/*.jar /demo.jar
 
-RUN echo v
-
-CMD ["java -jar", "my-app-1.0.0.jar"]
+CMD ["java", "-jar", "demo.jar"]
