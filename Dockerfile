@@ -1,6 +1,6 @@
 FROM ubuntu
 
-COPY . /target
+COPY . /staging
 
 RUN echo v
 
