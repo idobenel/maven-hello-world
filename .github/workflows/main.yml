@@ -20,21 +20,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '1.8'
-          
-          
-      - name: get_version
-        uses: battila7/get-version-action@v2
+      
+      - name: change version
+      - run: sed '0,/1.0.0/s/1.0.0/1.0.1/' pom.xml
 
-      - run: echo ${{ steps.get_version.outputs.major }}
-
-      - run: echo ${{ steps.get_version.outputs.patch }}
-        
-      - name:  'Automated Version Bump'
-        uses:  'phips28/gh-action-bump-version@master'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        with:
-          skip-tag:  'true'
 
       - name: Build with Maven
         run: |
