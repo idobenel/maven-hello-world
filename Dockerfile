@@ -4,4 +4,4 @@ COPY . /target
 
 RUN echo v
 
-CMD ["echo", "a"]
+CMD ["java -jar", "my-app-1.0.0.jar"]
