@@ -14,10 +14,8 @@ jobs:
         
     
       - name: Check Out Repo 
-        env:
-          MY_ENV_VAR: 1.0.1
         run: |
-          echo $MY_ENV_VAR
+          echo "GITHUB_SHA_SHORT=$(grep -oP -m 1 '(?<=<version>).*?(?=</version>)' my-app/pom.xml" >> $GITHUB_ENV
 #          cat version.properties >> $GITHUB_ENV
 #          echo ${{ secrets.DOCKER_HUB_USERNAME }}
 #          echo "temp=yellow" >> $GITHUB_ENV
