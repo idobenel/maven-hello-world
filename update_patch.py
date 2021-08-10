@@ -21,6 +21,7 @@ version.text = new_version
 ET.register_namespace("", "http://maven.apache.org/POM/4.0.0")
 tree.write('my-app/pom.xml')
 
+# update latest_version file
 f = open("latest_version", "w")
 f.write(new_version)
 f.close()
