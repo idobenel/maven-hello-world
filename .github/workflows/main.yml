@@ -19,6 +19,11 @@ jobs:
 #          cat version.properties >> $GITHUB_ENV
 #          echo ${{ secrets.DOCKER_HUB_USERNAME }}
 #          echo "temp=yellow" >> $GITHUB_ENV
+
+
+      - name: Retrieve version
+        run: |
+          echo ::set-env name=TAG_NAME::$(cat my-app/pom.xml | grep -Po '(?<=Version>).*(?=</Version>)')
         
         
         
@@ -67,7 +72,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:${{ env.GIT_JAR_VERSION }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:${{ env.TAG_NAME }}
 
 
       - name: Image digest
