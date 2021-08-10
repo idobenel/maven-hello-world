@@ -3,7 +3,7 @@
 import xml.etree.ElementTree as ET
 
 # create xml tree
-tree = ET.parse('pom.xml')
+tree = ET.parse('my-app/pom.xml')
 root = tree.getroot()
 
 # use namespace
