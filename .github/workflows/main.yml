@@ -23,8 +23,9 @@ jobs:
 
       - name: Retrieve version
         run: |
-          ls
-          echo "::set-output name=TAG_NAME::$(cat /my-app/pom.xml | grep -Po '(?<=Version>).*(?=</Version>)')"
+          pwd
+          echo "::set-output name=TAG_NAME::$(cat my-app/pom.xml | grep -Po '(?<=Version>).*(?=</Version>)')"
+          echo ${{ steps.version.outputs.TAG_NAME }}
         id: version
         
         
