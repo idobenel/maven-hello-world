@@ -65,7 +65,7 @@ jobs:
       - name: Retrieve version
         run: |
           pwd
-          echo "::set-output name=TAG_NAME::$(cat /home/runner/work/maven-hello-world/maven-hello-world/my-app/pom.xml | grep -Po '(?<=Version>).*(?=</Version>)')"
+          echo "::set-output name=TAG_NAME::$(cat latest_version)"
           echo ${{ steps.version.outputs.TAG_NAME }}
         id: version      
       
