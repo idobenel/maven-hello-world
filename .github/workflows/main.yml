@@ -15,7 +15,7 @@ jobs:
     
       - name: Check Out Repo 
         env:
-          MY_ENV_VAR: ${{ grep -oP -m 1 '(?<=<version>).*?(?=</version>)' my-app/pom.xml }}
+          MY_ENV_VAR: 1.0.1
         run: |
           echo $MY_ENV_VAR
 #          cat version.properties >> $GITHUB_ENV
