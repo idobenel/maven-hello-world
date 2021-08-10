@@ -23,7 +23,8 @@ jobs:
 
       - name: Retrieve version
         run: |
-          echo ::set-env name=TAG_NAME::$(cat my-app/pom.xml | grep -Po '(?<=Version>).*(?=</Version>)')
+          echo "::set-output name=TAG_NAME::$(cat my-app/pom.xml | grep -Po '(?<=Version>).*(?=</Version>)')"
+        id: version
         
         
         
@@ -72,7 +73,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:${{ env.TAG_NAME }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:${{ steps.version.outputs.TAG_NAME }}
 
 
       - name: Image digest
