@@ -46,7 +46,7 @@ jobs:
 
       - name: Assign release version from version.properties to Env variable
         run: |
-            grep -oP -m 1 '(?<=<title>).*?(?=</title>)' my-app/pom.xml > $GITHUB_ENV 
+            grep -oP -m 1 '(?<=<title>).*?(?=</title>)' my-app/pom.xml
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -54,7 +54,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:$GITHUB_ENV
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:1.0.1
 
 
       - name: Image digest
