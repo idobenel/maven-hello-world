@@ -1,8 +1,8 @@
 FROM openjdk:8
 
-COPY my-app /my-app
+COPY my-app/target/my-app*.jar /my-app/my-app.jar
 
 WORKDIR /my-app
 
-CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
+CMD ["java", "-jar", "my-app.jar"]
 
