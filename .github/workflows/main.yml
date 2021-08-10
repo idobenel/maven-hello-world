@@ -11,7 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        
     
+      - name: Check Out Repo 
+        run: |
+          temp = grep -oP -m 1 '(?<=<version>).*?(?=</version>)' my-app/pom.xml
+          echo $temp
+#          cat version.properties >> $GITHUB_ENV
+#          echo ${{ secrets.DOCKER_HUB_USERNAME }}
+#          echo "temp=yellow" >> $GITHUB_ENV
+        
+        
+        
+        
       - name: Check Out Repo 
         uses: actions/checkout@v2
 
@@ -56,9 +68,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:${{ version }}
-        env:
-          version: "1.0.1"
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:1.0.1
 
 
       - name: Image digest
