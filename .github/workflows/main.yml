@@ -43,16 +43,18 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1
 
+
+      - name: Assign release version from version.properties to Env variable
+        run: |
+            grep -oP -m 1 '(?<=<title>).*?(?=</title>)' my-app/pom.xml >> $GITHUB_ENV 
       - name: Build and push
-        env: 
-          version: grep -oP -m 1 '(?<=<version>).*?(?=</version>)' my-app/pom.xml
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:$version
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest,${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:$GITHUB_ENV
 
 
       - name: Image digest
